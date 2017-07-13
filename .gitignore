@@ -9,3 +9,5 @@ static/*
 *.pyc
 *.log
 *.swp
+
+\.idea/
