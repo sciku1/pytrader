@@ -22,11 +22,18 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '))iy*8&jyl3s6m58g(z=6xo5yq^hl^-ppk$v-h-pd#@fhn&k@0'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-MAKE_TRADES = True
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'cache',
+    }
+}
 
-ALLOWED_HOSTS = ['trader.owocki.com', '45.55.42.224']
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
+MAKE_TRADES = False
+
+ALLOWED_HOSTS = ['67.207.95.206']
 
 
 # Application definition
@@ -39,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'history',
-    'chartit',
+#    'chartit',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -282,4 +289,4 @@ try:
     from pypolo.local_settings import *  # NOQA
     INSTALLED_APPS += DEBUG_APPS
 except (ImportError, NameError) as exp:
-    print 'Failed to load pypolo/local_settings.py because: %s' % exp
+    print('Failed to load pypolo/local_settings.py because: %s' % exp)
